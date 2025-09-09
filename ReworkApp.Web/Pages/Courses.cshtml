@@ -1,0 +1,21 @@
+@page
+@model CoursesModel
+@{
+    ViewData["Title"] = "Available Courses";
+    ViewData["ActivePage"] = "Courses";
+}
+
+<div class="card">
+    <h2>Available Courses</h2>
+    <p>Our courses are designed to help you upskill, reskill, and gain confidence.</p>
+    <ul>
+        @foreach (var course in Model.Courses)
+        {
+            <li>
+                <h3>@course.Title</h3>
+                <p>@course.Description</p>
+                <p><strong>Duration:</strong> @course.DurationWeeks weeks</p>
+            </li>
+        }
+    </ul>
+</div>

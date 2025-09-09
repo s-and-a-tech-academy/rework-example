@@ -1,0 +1,20 @@
+@page
+@model JobsModel
+@{
+ViewData["Title"] = "Job Listings";
+ViewData["ActivePage"] = "Jobs";
+}
+
+<div class="card">
+<h2>Current Job Listings</h2>
+<ul>
+@foreach (var job in Model.Jobs)
+{
+<li>
+<h3>@job.Title</h3>
+<p>@job.Description</p>
+<p><strong>Type:</strong> @job.Type</p>
+</li>
+}
+</ul>
+</div>
