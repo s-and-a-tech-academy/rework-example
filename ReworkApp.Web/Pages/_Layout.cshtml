@@ -1,41 +1,47 @@
 @using System.Security.Claims
+@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+var currentPage = ViewContext.RouteData.Values["page"]?.ToString().Trim('/');
+}
 
 <!DOCTYPE html>
 
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - REWORK</title>
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/newsletter.css" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>@ViewData["Title"] - REWORK</title>
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/css/newsletter.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <a class="navbar-brand" href="/">REWORK</a>
-            <div class="navbar-links">
-                <a class="nav-item" href="/">Home</a>
-                <a class="nav-item" href="/Jobs">Jobs</a>
-                <a class="nav-item" href="/Courses">Courses</a>
-                <a class="nav-item" href="/Newsletter">Newsletter</a>
-            </div>
-        </nav>
-    </header>
+<header>
+<nav class="navbar">
+<a class="navbar-brand" href="/">REWORK</a>
+<div class="navbar-nav">
+<a class="nav-link @(currentPage == "" || currentPage == "Index" ? "active" : "")" href="/">Home</a>
+<a class="nav-link @(currentPage == "Jobs" ? "active" : "")" href="/Jobs">Jobs</a>
+<a class="nav-link @(currentPage == "Courses" ? "active" : "")" href="/Courses">Courses</a>
+<a class="nav-link @(currentPage == "Newsletter" ? "active" : "")" href="/Newsletter">Newsletter</a>
+</div>
+</nav>
+</header>
 
-    <main role="main" class="pb-3">
+<main role="main">
+    <div class="container section">
         @RenderBody()
-    </main>
+    </div>
+</main>
 
-    <footer class="footer">
-        <p>&copy; @DateTime.Now.Year - REWORK - All rights reserved.</p>
-    </footer>
+<footer class="footer">
+    <p>&copy; @DateTime.Now.Year - REWORK - All rights reserved.</p>
+</footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
 
-    @await RenderSectionAsync("Scripts", required: false)
+@await RenderSectionAsync("Scripts", required: false)
 
 </body>
 </html>

@@ -1,214 +1,205 @@
 :root {
---primary-color: #5B21B6; /* Purple /
---secondary-color: #8B5CF6; / Lighter Purple */
---text-color: #1F2937;
---bg-color: #F8FAFC;
---card-bg: #FFFFFF;
---border-color: #E2E8F0;
+--color-primary: #007bff;
+--color-secondary: #6c757d;
+--color-success: #28a745;
+--color-danger: #dc3545;
+--color-light: #f8f9fa;
+--color-dark: #343a40;
+--color-white: #fff;
+--font-family-sans-serif: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
+/* General body and container styling */
 body {
-font-family: 'Inter', sans-serif;
-background-color: var(--bg-color);
-color: var(--text-color);
+font-family: var(--font-family-sans-serif);
 margin: 0;
-padding: 0;
-line-height: 1.6;
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+background-color: var(--color-light);
 }
 
 .container {
-max-width: 1024px;
-margin: 0 auto;
-padding: 20px;
+padding: 1.5rem;
+margin-top: 1rem;
+max-width: 960px;
+margin-left: auto;
+margin-right: auto;
+width: 100%;
 }
 
+/* Header and navigation styling */
 header {
-background-color: var(--card-bg);
-padding: 20px 40px;
-border-bottom: 1px solid var(--border-color);
+background-color: var(--color-dark);
+padding: 1rem 0;
+width: 100%;
+position: sticky;
+top: 0;
+z-index: 1000;
+}
+
+.navbar {
 display: flex;
 justify-content: space-between;
 align-items: center;
-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-min-width: 100vw;
+max-width: 960px;
+margin: 0 auto;
+padding: 0 1rem;
 }
 
-header h1 {
-color: var(--primary-color);
+.navbar-brand {
+color: var(--color-white);
 font-size: 1.5rem;
-margin: 0;
-font-weight: 700;
-}
-
-nav a {
-color: var(--text-color);
+font-weight: bold;
 text-decoration: none;
-font-weight: 600;
-margin-left: 25px;
-padding: 8px 15px;
-border-radius: 8px;
-transition: background-color 0.3s ease;
 }
 
-nav a:hover, nav a.active {
-background-color: var(--border-color);
+.navbar-nav {
+list-style: none;
+padding: 0;
+margin: 0;
+display: flex;
+align-items: center;
 }
 
+.nav-item {
+margin-left: 1rem;
+}
+
+.nav-link {
+color: var(--color-white);
+text-decoration: none;
+transition: color 0.2s ease-in-out;
+padding: 0.5rem 0.75rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+color: var(--color-primary);
+}
+
+.nav-btn {
+background-color: var(--color-primary);
+color: var(--color-white);
+padding: 0.5rem 1rem;
+border-radius: 0.25rem;
+font-weight: bold;
+text-decoration: none;
+transition: background-color 0.2s ease-in-out;
+}
+
+.nav-btn:hover {
+background-color: #0056b3;
+}
+
+/* Main content and section styling */
+main {
+flex: 1;
+}
+
+.section {
+padding: 2rem 0;
+background-color: var(--color-white);
+margin-bottom: 1.5rem;
+border-radius: 0.5rem;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+font-size: 2rem;
+text-align: center;
+margin-bottom: 2rem;
+color: var(--color-dark);
+}
+
+/* Hero section styling for the home page */
+.hero-section {
+background-color: var(--color-primary);
+color: var(--color-white);
+padding: 4rem 2rem;
+text-align: center;
+border-radius: 0.5rem;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section h1 {
+font-size: 3rem;
+margin-bottom: 0.5rem;
+}
+
+.hero-section p {
+font-size: 1.25rem;
+margin-bottom: 2rem;
+opacity: 0.9;
+}
+
+/* Button styling */
+.btn {
+display: inline-block;
+padding: 0.75rem 1.5rem;
+border-radius: 0.25rem;
+text-decoration: none;
+font-weight: bold;
+border: none;
+cursor: pointer;
+transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.btn-light {
+background-color: var(--color-light);
+color: var(--color-dark);
+}
+
+.btn-light:hover {
+background-color: #e2e6ea;
+}
+
+/* Card styling */
 .card {
-background-color: var(--card-bg);
-border: 1px solid var(--border-color);
-border-radius: 12px;
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-padding: 30px;
-margin-top: 20px;
+background-color: var(--color-white);
+border: 1px solid #ddd;
+border-radius: 0.5rem;
+padding: 1.5rem;
+margin-bottom: 1.5rem;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.card h2 {
-color: var(--secondary-color);
+.card-title {
+font-size: 1.25rem;
 margin-top: 0;
-font-size: 1.8rem;
-font-weight: 700;
+margin-bottom: 0.75rem;
 }
 
-.card p, .card ul {
-color: #4B5563;
+/* Text and list styling for jobs/courses */
+.text-muted {
+color: var(--color-secondary);
+font-size: 0.875rem;
 }
 
-ul {
+.content-list {
 list-style: none;
 padding: 0;
 }
 
-li {
-padding: 15px;
-border-bottom: 1px solid var(--border-color);
-}
-
-li:last-child {
-border-bottom: none;
-}
-
-.cta-button {
-display: inline-block;
-background-color: var(--primary-color);
-color: #FFFFFF;
-font-weight: 600;
-padding: 12px 24px;
-border-radius: 8px;
-text-decoration: none;
-transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
-background-color: var(--secondary-color);
-}
-
-footer {
-text-align: center;
-padding: 20px;
-color: #9CA3AF;
-font-size: 0.9rem;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-header {
-flex-direction: column;
-padding: 20px;
-}
-
-nav {
-    margin-top: 15px;
-}
-
-nav a {
-    margin: 0 5px;
-    display: block;
-    text-align: center;
-}
-
-}
-
-
-body {
-font-family: Arial, sans-serif;
-margin: 0;
-padding: 0;
-background-color: #f4f4f4;
-}
-
-.navbar {
-background-color: #ffffff;
-padding: 1rem 2rem;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-display: flex;
-justify-content: space-between;
-align-items: center;
-}
-
-.navbar-brand {
-font-size: 1.5rem;
-font-weight: bold;
-color: #333;
-text-decoration: none;
-}
-
-.navbar-links {
-display: flex;
-gap: 1.5rem;
-}
-
-.nav-item {
-color: #555;
-text-decoration: none;
-font-weight: 500;
-transition: color 0.3s ease;
-}
-
-.nav-item:hover {
-color: #007bff;
-}
-
-.container {
-padding: 2rem;
-max-width: 960px;
-margin: 0 auto;
-}
-
-h1, h2 {
-color: #333;
-border-bottom: 2px solid #007bff;
-padding-bottom: 0.5rem;
-margin-bottom: 1.5rem;
-}
-
-ul {
-list-style-type: none;
-padding: 0;
-}
-
-li {
-background-color: #ffffff;
+.list-item {
+background-color: var(--color-white);
 border: 1px solid #ddd;
-border-radius: 8px;
+border-radius: 0.5rem;
 padding: 1.5rem;
 margin-bottom: 1rem;
 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-li h3 {
+.list-item h4 {
 margin-top: 0;
-color: #007bff;
+margin-bottom: 0.5rem;
 }
 
-li p {
-margin: 0.5rem 0;
-}
-
-.footer {
-text-align: center;
+/* Footer styling */
+footer {
 padding: 1.5rem;
-background-color: #333;
-color: #ffffff;
-margin-top: 2rem;
+text-align: center;
+color: var(--color-secondary);
+border-top: 1px solid #e9ecef;
+margin-top: auto;
 }
