@@ -1,30 +1,41 @@
+@using System.Security.Claims
+
 <!DOCTYPE html>
 
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>REWORK - @ViewData["Title"]</title>
-<link rel="stylesheet" href="~/css/site.css" />
-<link href="https://www.google.com/search?q=https://fonts.googleapis.com/css2%3Ffamily%3DInter:wght%40400%3B600%3B700%26display%3Dswap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - REWORK</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/newsletter.css" />
 </head>
 <body>
-<header>
-<h1>REWORK</h1>
-<nav>
-<a asp-page="/Index" class="nav-link @(ViewData["ActivePage"]?.ToString() == "Home" ? "active" : "")">Home</a>
-<a asp-page="/Jobs" class="nav-link @(ViewData["ActivePage"]?.ToString() == "Jobs" ? "active" : "")">Jobs</a>
-<a asp-page="/Courses" class="nav-link @(ViewData["ActivePage"]?.ToString() == "Courses" ? "active" : "")">Courses</a>
-</nav>
-</header>
+    <header>
+        <nav class="navbar">
+            <a class="navbar-brand" href="/">REWORK</a>
+            <div class="navbar-links">
+                <a class="nav-item" href="/">Home</a>
+                <a class="nav-item" href="/Jobs">Jobs</a>
+                <a class="nav-item" href="/Courses">Courses</a>
+                <a class="nav-item" href="/Newsletter">Newsletter</a>
+            </div>
+        </nav>
+    </header>
 
-<main class="container">
-    @RenderBody()
-</main>
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
 
-<footer>
-    &copy; 2023 REWORK. All rights reserved.
-</footer>
+    <footer class="footer">
+        <p>&copy; @DateTime.Now.Year - REWORK - All rights reserved.</p>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
 
 </body>
 </html>
