@@ -20,7 +20,7 @@ public class NewsletterTests
     {
         // Arrange
         var model = new NewsletterModel();
-        model.Subscription = new Newsletter { Name = "John Doe", Email = "john.doe@example.com" };
+        model.Subscription = new Newsletter { Name = "John Doe", Email = "" };
  
         // Act
         var result = model.OnPost();
