@@ -1,0 +1,31 @@
+@page
+@model NewsletterModel
+@{
+    ViewData["Title"] = "Newsletter";
+}
+ 
+<div class="newsletter-container">
+    <h1 class="text-center">Subscribe to Our Newsletter</h1>
+ 
+    @if (Model.IsSubscriptionSuccessful)
+    {
+        <div class="alert alert-success">
+            Thank you for subscribing, @Model.Subscription.Name! We'll keep you updated.
+        </div>
+    }
+ 
+    <form method="post" class="subscription-form">
+        <div class="form-group">
+            <label asp-for="Subscription.Name">Your Name</label>
+            <input asp-for="Subscription.Name" class="form-control" />
+            <span asp-validation-for="Subscription.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Subscription.Email">Your Email</label>
+            <input asp-for="Subscription.Email" class="form-control" />
+            <span asp-validation-for="Subscription.Email" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+ 
+</div>
