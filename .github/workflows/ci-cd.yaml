@@ -44,7 +44,19 @@ jobs:
           indicators: true
           output: console
 
+      - id: publish
+        name: Publish
+        run: dotnet publish "ReworkApp.Web/ReworkApp.Web.csproj" -c Release -o ./publish --self-contained -r linux-x64 /p:UseApphost=true
+      
+      - name: Zip Artifact
+        run: zip app.zip ./publish
 
+      - id: upload
+        name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with: 
+          name: dotnet-webapp
+          path: app.zip
 
 
   
