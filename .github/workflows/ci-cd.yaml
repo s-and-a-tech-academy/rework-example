@@ -21,10 +21,23 @@ jobs:
       - id: build
         name: Build
         run: dotnet build --no-restore
+
+      - name: Create Tests Cache
+        uses: actions/cache/save@v4
+        with:
+          path: ReworkApp.Tests/bin
+          key: tests-build
   
   test:
     runs-on: ubuntu-latest
+    needs:
+      - build
     steps:
+      - name: Restore Tests Cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ReworkApp.Tests/bin
+          key: tests-build
       - id: test
         if: steps.build.outcome == 'success'
         name: Test
