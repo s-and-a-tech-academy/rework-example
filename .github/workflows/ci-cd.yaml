@@ -39,7 +39,6 @@ jobs:
           path: ReworkApp.Tests/bin
           key: tests-build
       - id: test
-        if: steps.build.outcome == 'success'
         name: Test
         run: dotnet test --no-build --verbosity normal
 
